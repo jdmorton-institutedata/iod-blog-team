@@ -21,7 +21,7 @@ const e = require('express');
  *      '500':
  *          description: Server error
  */
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
     try{
         const data = await postController.getPosts();
         res.send({ result: 200, data: data });
@@ -56,7 +56,7 @@ router.get('/', async (req, res) => {
  *      '500':
  *          description: Server error
  */
-router.get('/:id', idParamValidator, async (req, res) => {
+router.get('/:id', idParamValidator, async (req, res, next) => {
     try{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -100,7 +100,7 @@ router.get('/:id', idParamValidator, async (req, res) => {
  *      '500':
  *          description: Server error
  */
-router.get('/:id/include', idParamValidator, async (req, res) => {
+router.get('/:id/include', idParamValidator, async (req, res, next) => {
     try{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -145,7 +145,7 @@ router.get('/:id/include', idParamValidator, async (req, res) => {
  *      '500':
  *          description: Server error
  */
-router.get('/user/:id', idParamValidator, async (req, res) => {
+router.get('/user/:id', idParamValidator, async (req, res, next) => {
     try{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -200,7 +200,7 @@ router.get('/user/:id', idParamValidator, async (req, res) => {
  *       '500':
  *          description: Server error
  */
-router.post('/', postValidator, async (req, res) => {
+router.post('/', postValidator, async (req, res, next) => {
     try{
         // console.log(req.body);
         const errors = validationResult(req);
@@ -264,7 +264,7 @@ router.post('/', postValidator, async (req, res) => {
  *      '500':
  *          description: Server error
  */
-router.put('/:id', postUpdateValidator, async (req, res) => {
+router.put('/:id', postUpdateValidator, async (req, res, next) => {
     try{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -303,7 +303,7 @@ router.put('/:id', postUpdateValidator, async (req, res) => {
  *      '500':
  *          description: Server error
  */
-router.delete('/:id', idParamValidator, async (req, res) => {
+router.delete('/:id', idParamValidator, async (req, res, next) => {
     try{
         const errors = validationResult(req);
         if (errors.isEmpty()) {
