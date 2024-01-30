@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+var cors = require('cors');
 const handlebars = require('express-handlebars');
 const { handleInvalidJson, handleUnauthorized, handleNotFound, handleAllOtherErrors } = require("./errors/errorHandler");
 const morganMiddleware = require("./logging/morganMiddleware");
@@ -12,7 +13,15 @@ const db = require("./db");
 const models = require("./models");
 models.init();
 
+var corsOptions = {
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
 const app = express();
+
+app.use(cors(corsOptions));
 
 app.set('view engine', 'hbs');
 
@@ -45,13 +54,10 @@ app.use("/api/comments", require("./routes/commentRoutes"));
 // add like routes
 app.use("/api/likes", require("./routes/likeRoutes"));
 
+app.use("/users", require("./routes/viewUserRoutes"));
+
 app.get("/", (req, res) => {
   res.render('main', {layout : 'index'});
-});
-
-app.get("/users", async (req, res) => {
-  const users = await userController.getUsers();
-  res.render('users', {layout : 'index', users: users});
 });
 
 // Add error handler middleware functions to the pipeline
