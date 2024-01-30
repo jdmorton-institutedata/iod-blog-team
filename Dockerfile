@@ -1,5 +1,6 @@
 FROM node:19-alpine
 
+ARG NODE_ENV
 ARG DB_NAME
 ARG DB_USER
 ARG DB_PASSWORD
@@ -8,6 +9,7 @@ ARG DB_PORT
 ARG PORT
 
 # Set environment variables during the build process
+ENV NODE_ENV=$NODE_ENV
 ENV DB_NAME=$DB_NAME
 ENV DB_USER=$DB_USER
 ENV DB_PASSWORD=$DB_PASSWORD
@@ -20,4 +22,4 @@ COPY . .
 RUN npm install
 EXPOSE 3000
 
-CMD ["npm","start" ]
+CMD ["npm", "run", "start-dev" ]
