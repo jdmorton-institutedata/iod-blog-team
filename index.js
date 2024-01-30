@@ -3,6 +3,7 @@ const express = require("express");
 const handlebars = require('express-handlebars');
 const { handleInvalidJson, handleUnauthorized, handleNotFound, handleAllOtherErrors } = require("./errors/errorHandler");
 const morganMiddleware = require("./logging/morganMiddleware");
+const userController = require("./controllers/userController");
 const Logger = require("./logging/logger");
 
 // Database
@@ -46,6 +47,11 @@ app.use("/api/likes", require("./routes/likeRoutes"));
 
 app.get("/", (req, res) => {
   res.render('main', {layout : 'index'});
+});
+
+app.get("/users", async (req, res) => {
+  const users = await userController.getUsers();
+  res.render('users', {layout : 'index', users: users});
 });
 
 // Add error handler middleware functions to the pipeline
