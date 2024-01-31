@@ -6,7 +6,7 @@ const Comment = require('../models/comment');
  * @returns {Promise<Array<Comment>>}
  */
 const getComments = async () => {
-    const data = await Comment.findAll({});
+    const data = await Comment.findAll({ raw: true});
     return data;
 };
 
@@ -16,7 +16,7 @@ const getComments = async () => {
  * @returns {Promise<Comment>}
  **/
 const getComment = async (id) => {
-    const data = await Comment.findOne({ where: { id: id } });
+    const data = await Comment.findOne({ where: { id: id }, raw: true});
     return data;
 };
 
@@ -26,7 +26,7 @@ const getComment = async (id) => {
  * @returns {Promise<Comment>}
  */
 const getCommentIncludeAll = async (id) => {
-    const data = await Comment.findOne({ where: { id: id }, include: { all: true } });
+    const data = await Comment.findOne({ where: { id: id }, include: { all: true }, raw: true});
     return data;
 };
 
@@ -36,7 +36,7 @@ const getCommentIncludeAll = async (id) => {
  * @returns {Promise<Array<Comment>>}
  * */
 const getCommentsByPost = async (id) => {
-    const data = await Comment.findAll({ where: { postId: id } });
+    const data = await Comment.findAll({ where: { postId: id }, raw: true });
     return data;
 };
 
@@ -46,7 +46,7 @@ const getCommentsByPost = async (id) => {
  * @returns {Promise<Array<Comment>>}
  */
 const getCommentsByUser = async (id) => {
-    const data = await Comment.findAll({ where: { userId: id } });
+    const data = await Comment.findAll({ where: { userId: id }, raw: true});
     return data;
 };
 

@@ -15,7 +15,7 @@ const getUsers = async () => {
  * @returns {Promise<User>}
  */
 const getUser = async (id) => {
-  const data = await User.findOne({ where: { id: id } });
+  const data = await User.findOne({ where: { id: id }, raw: true});
   return data;
 };
 

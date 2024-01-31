@@ -6,7 +6,7 @@ const Post = require('../models/post');
  * @returns Array<Post>
  */
 const getPosts = async () => {
-    const data = await Post.findAll({});
+    const data = await Post.findAll({ raw: true});
     return data;
 };
 
@@ -16,7 +16,7 @@ const getPosts = async () => {
  * @returns {Promise<Post>}
  */
 const getPost = async (id) => {
-    const data = await Post.findOne({ where: { id: id } });
+    const data = await Post.findOne({ where: { id: id }, raw: true });
     return data;
 };
 
@@ -26,7 +26,7 @@ const getPost = async (id) => {
  * @returns {Promise<Post>}
  */
 const getPostIncludeAll = async (id) => {
-    const data = await Post.findOne({ where: { id: id }, include: { all: true } });
+    const data = await Post.findOne({ where: { id: id }, include: { all: true }, raw: true});
     return data;
 };
 
@@ -36,7 +36,7 @@ const getPostIncludeAll = async (id) => {
  * @returns {Promise<Array<Post>>}
  */
 const getPostsByUser = async (id) => {
-    const data = await Post.findAll({ where: { userId: id } });
+    const data = await Post.findAll({ where: { userId: id } , raw: true});
     return data;
 };
 

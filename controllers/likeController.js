@@ -5,7 +5,7 @@ const Like = require('../models/like');
  * @returns {Promise<Array<Like>>}
  */
 const getLikes = async () => {
-    const data = await Like.findAll({});
+    const data = await Like.findAll({ raw: true });
     return data;
 };
 
@@ -15,7 +15,7 @@ const getLikes = async () => {
  * @returns {Promise<Like>}
  */
 const getLike = async (id) => {
-    const data = await Like.findOne({ where: { id: id } });
+    const data = await Like.findOne({ where: { id: id }, raw: true});
     return data;
 };
 
@@ -25,7 +25,7 @@ const getLike = async (id) => {
  * @returns {Promise<Like>}
  */
  const getLikeIncludeAll = async (id) => {
-    const data = await Like.findOne({ where: { id: id }, include: { all: true } });
+    const data = await Like.findOne({ where: { id: id }, include: { all: true }, raw: true});
     return data;
 };
 
@@ -35,7 +35,7 @@ const getLike = async (id) => {
  * @returns {Promise<Array<Like>>}
  * */
 const getLikesByPost = async (id) => {
-    const data = await Like.findAll({ where: { postId: id } });
+    const data = await Like.findAll({ where: { postId: id }, raw: true });
     return data;
 };
 
@@ -45,7 +45,7 @@ const getLikesByPost = async (id) => {
  * @returns {Promise<Array<Like>>}
  * */
 const getLikesByUser = async (id) => {
-    const data = await Like.findAll({ where: { userId: id } });
+    const data = await Like.findAll({ where: { userId: id }, raw: true});
     return data;
 };
 
