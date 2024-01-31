@@ -11,4 +11,13 @@ router.get("/", async (req, res, next) => {
     }
   });
 
+  router.get("/add", async (req, res, next) => {
+    try {
+        const users = await userController.getUsers();
+        res.render('users-add', {layout : 'index'});
+    } catch (err) {
+        next(err);
+    }
+  });
+
 module.exports = router;

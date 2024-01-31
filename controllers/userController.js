@@ -5,7 +5,7 @@ const User = require("../models/user");
  * @returns {Promise<User[]>}
  */
 const getUsers = async () => {
-    const data = await User.findAll({});
+    const data = await User.findAll({raw: true});
     return data;
 };
 
