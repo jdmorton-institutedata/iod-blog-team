@@ -8,6 +8,7 @@ Topics:
 - Error handling
 - Swagger with JsDoc
 - Handlebars with Bootstrap
+- Testing with Jest and Supertest  
 - Docker and Docker Compose
 - Github Actions  
 
@@ -15,7 +16,7 @@ Topics:
 You'll need two ... blogdb and blogdb_test
 
 # Development Order
-This is the order in which the features were developed by branch.
+This is the order in which the features were developed by branch.  
 
 1. feature/datbase
 2. feature/routes
