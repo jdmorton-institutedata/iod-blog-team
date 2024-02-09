@@ -50,6 +50,7 @@ jobs:
             DB_SSL=${{ secrets.DB_SSL }}
             BASE_URL=${{ secrets.BASE_URL }}
             PORT=${{ secrets.PORT }}
+            CORS_ORIGIN=${{ secrets.CORS_ORIGIN }}
             
 
       - name: Image digest

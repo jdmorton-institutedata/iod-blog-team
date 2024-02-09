@@ -216,7 +216,11 @@ router.post('/', postValidator, async (req, res, next) => {
         }
     }
     catch(err){
-        next(err);
+        if (err.name === 'SequelizeForeignKeyConstraintError') {
+            res.status(422).send({ errors: err.parent });
+        }else {
+            next(err);
+        }
     }
 });
 
