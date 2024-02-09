@@ -13,15 +13,7 @@ const db = require("./db");
 const models = require("./models");
 models.init();
 
-var corsOptions = {
-  origin: process.env.CORS_ORIGIN || "*",
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-
-const app = express();
-
-app.use(cors(corsOptions));
+const app = require("./app");
 
 app.set('view engine', 'hbs');
 
@@ -31,8 +23,6 @@ app.engine('hbs', handlebars.engine({
   defaultLayout: 'main',
   extname: 'hbs'
 }));
-
-app.use(express.json());
 //Serves static files (we need it to import a css file)
 app.use(express.static('public'));
 

@@ -1,8 +1,8 @@
 # iod-blog-team
 
-Example Express Api using Sequelize and MySQL.
+A simple example Express blog application, built using Sequelize and MySQL.  
 
-Some example views with Handlebars.
+Some basic example views with Handlebars and Bootstrap.
 
 Topics:
 - Validation with express-validator
@@ -12,6 +12,20 @@ Topics:
 - Handlebars with Bootstrap
 - Docker and Docker Compose
 - Github Actions
+
+# Databases
+You'll need two ... blogsdb and blogsdb_test
+
+# Development Order
+This is the order in which the features were developed by branch.
+
+1. feature/datbase
+2. feature/routes
+3. feature/views
+4. feature/hbs-views
+5. feature/cors
+6. feature/corsOptions
+7. feature/testing
 
 
 ## References
@@ -23,6 +37,6 @@ Topics:
 [Testing Express with Jest and SuperTest](https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/)  
 [Logging with winston and morgan](https://betterstack.com/community/guides/logging/how-to-install-setup-and-use-winston-and-morgan-to-log-node-js-applications/)  
 [Add Views with handlebars](https://waelyasmina.medium.com/a-guide-into-using-handlebars-with-your-express-js-application-22b944443b65)  
-
-# Databases
-You'll need two ... blogsdb and blogsdb_test
+[Bootstrap](https://getbootstrap.com/)  
+[Middleware and Error Handling Middleware in Express](https://medium.com/@arunchaitanya/understanding-normal-middleware-and-error-handling-middleware-in-express-js-d3ecbd9b9849)  
+[Express Error Handling](https://expressjs.com/en/guide/error-handling.html)  
