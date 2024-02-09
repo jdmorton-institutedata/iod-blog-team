@@ -191,7 +191,12 @@ router.post('/', likeValidator, async (req, res, next) => {
             res.status(201).send({ result: 201, data: data });
         }
     }catch (err) {
-        next(err);
+        // check SequelizeForeignKeyConstraintError
+        if (err.name === 'SequelizeForeignKeyConstraintError') {
+            res.status(422).send({ errors: err.parent });
+        }else {
+            next(err);
+        }
     }
 });
 

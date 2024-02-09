@@ -14,7 +14,7 @@ const models = require("./models");
 models.init();
 
 var corsOptions = {
-  origin: 'http://localhost:8080',
+  origin: process.env.CORS_ORIGIN || "*",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
@@ -69,5 +69,5 @@ app.use(handleAllOtherErrors);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  Logger.debug(`Example app listening on port ${port}!`);
+  Logger.debug(`IOD Blog Api listening on port ${port}!`);
 });

@@ -124,9 +124,12 @@ router.post("/", userValidator, async (req, res, next) => {
     }
   }
   catch(err){
-    // next(err);
-    console.log(err);
-    next(err);
+    // handle duplicate email error
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      res.status(422).json({errors: err.errors});
+    }else{
+      next(err);
+    }
   }
 });
 
