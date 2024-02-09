@@ -26,3 +26,14 @@ Topics:
 
 # Databases
 You'll need two ... blogsdb and blogsdb_test
+
+# Development Order
+This is the order in which the features were developed by branch.
+
+1. feature/datbase
+2. feature/routes
+3. feature/views
+4. feature/hbs-views
+5. feature/cors
+6. feature/corsOptions
+7. feature/testing
