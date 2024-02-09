@@ -1,3 +1,4 @@
+process.env.NODE_ENV="test"
 process.env.DB_NAME="blogdb_test"
 process.env.DB_USER="root"
 process.env.DB_PASSWORD="pa55word"
