@@ -62,12 +62,12 @@ router.get("/:id", idParamValidator, async (req, res, next) => {
     if (errors.isEmpty()) {
       data = await userController.getUser(req.params.id);
       if (!data) {
-        res.sendStatus(404);
+        res.status(404).json({ result: 404, message: "User not found" });
       } else {
         res.send({ result: 200, data: data });
       }
     } else {
-      res.status(422).json({errors: errors.array()});
+      res.status(422).json({result: 422, errors: errors.array()});
     }
   }
   catch(err){
@@ -120,13 +120,13 @@ router.post("/", userValidator, async (req, res, next) => {
       const data = await userController.createUser(req.body);
       res.send({ result: 200, data: data });
     } else {
-      res.status(422).json({errors: errors.array()});
+      res.status(422).json({result: 422, errors: errors.array()});
     }
   }
   catch(err){
     // handle duplicate email error
     if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(422).json({errors: err.errors});
+      res.status(422).json({result: 422, errors: err.errors});
     }else{
       next(err);
     }
@@ -185,12 +185,12 @@ router.put("/:id", userUpdateValidator, async (req, res, next) => {
     if (errors.isEmpty()) {
       const data = await userController.updateUser(req.params.id, req.body);
       if (data[0] === 0) {
-        res.sendStatus(404);
+        res.status(404).json({ result: 404, message: "User not found" });
       } else {
         res.send({ result: 200, data: data });
       }
     } else {
-      res.status(422).json({errors: errors.array()});
+      res.status(422).json({result: 422, errors: errors.array()});
     }
   }
   catch(err){
@@ -229,12 +229,12 @@ router.delete("/:id", idParamValidator, async (req, res, next) => {
     if (errors.isEmpty()) {
       const data = await userController.deleteUser(req.params.id);
       if (!data) {
-        res.sendStatus(404);
+        res.status(404).json({ result: 404, message: "User not found" });
       } else {
         res.send({ result: 200, data: data });
       }
     } else {
-      res.status(422).json({errors: errors.array()});
+      res.status(422).json({result: 422, errors: errors.array()});
     }
   }
   catch(err){
