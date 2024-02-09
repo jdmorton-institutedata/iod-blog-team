@@ -1,8 +1,6 @@
 # iod-blog-team
 
-A simple example Express blog application, built using Sequelize and MySQL.  
-
-Some basic example views with Handlebars and Bootstrap.
+A sample Express blog application, built using Sequelize and MySQL. Meant to demonstrate some fundamental Node Express development patterns and tools, not intended to be a complete or production application. Includes basic example views with Handlebars and Bootstrap.
 
 Topics:
 - Validation with express-validator
@@ -11,10 +9,10 @@ Topics:
 - Swagger with JsDoc
 - Handlebars with Bootstrap
 - Docker and Docker Compose
-- Github Actions
+- Github Actions  
 
 # Databases
-You'll need two ... blogsdb and blogsdb_test
+You'll need two ... blogdb and blogdb_test
 
 # Development Order
 This is the order in which the features were developed by branch.
@@ -26,7 +24,6 @@ This is the order in which the features were developed by branch.
 5. feature/cors
 6. feature/corsOptions
 7. feature/testing
-
 
 ## References
 [Swagger implementation](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)  
