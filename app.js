@@ -10,4 +10,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+if (process.env.NODE_ENV === "test") {
+  app.get("/", (req, res) => {
+    res.json({ message: "Welcome to my Blog application." });
+  });
+}
+
 module.exports = app;

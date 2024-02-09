@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env.test" });
 const { faker } = require("@faker-js/faker");
-const db = require("../config/database");
+const db = require("../db");
 const models = require("../models");
 
 module.exports = async function (globalConfig, projectConfig) {
