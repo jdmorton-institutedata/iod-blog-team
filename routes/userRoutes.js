@@ -4,6 +4,8 @@ const { userValidator, userUpdateValidator } = require("../validators/userValida
 const { idParamValidator } = require("../validators");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const multer  = require('multer');
+const upload = multer({ dest: process.env.UPLOADS_DIR || 'uploads'});
 
 /**
  * @swagger
@@ -101,6 +103,9 @@ router.get("/:id", idParamValidator, async (req, res, next) => {
  *         password:
  *          type: string
  *          example: password
+ *         avatar:
+ *          type: string
+ *          example: filename.jpg
  *    responses:
  *      '200':
  *        description: A successful response
@@ -113,11 +118,13 @@ router.get("/:id", idParamValidator, async (req, res, next) => {
  *      '500':
  *        description: Server error
  */
-router.post("/", userValidator, async (req, res, next) => {
+router.post("/", upload.single('avatar'), userValidator, async (req, res, next) => {
   try{
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      const data = await userController.createUser(req.body);
+      let user = req.body;
+      user.avatar = req.file.filename;
+      const data = await userController.createUser(user);
       res.send({ result: 200, data: data });
     } else {
       res.status(422).json({result: 422, errors: errors.array()});

@@ -4,7 +4,6 @@ var cors = require('cors');
 const handlebars = require('express-handlebars');
 const { handleInvalidJson, handleUnauthorized, handleNotFound, handleAllOtherErrors } = require("./errors/errorHandler");
 const morganMiddleware = require("./logging/morganMiddleware");
-const userController = require("./controllers/userController");
 const Logger = require("./logging/logger");
 
 // Database
@@ -24,7 +23,8 @@ app.engine('hbs', handlebars.engine({
   extname: 'hbs'
 }));
 //Serves static files (we need it to import a css file)
-app.use(express.static('public'));
+app.use(express.static('public')); 
+app.use('/uploads', express.static('uploads')); 
 
 app.use(morganMiddleware);
 
