@@ -5,7 +5,7 @@ const { idParamValidator } = require("../validators");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: process.env.UPLOADS_DIR || 'uploads'});
 
 /**
  * @swagger
