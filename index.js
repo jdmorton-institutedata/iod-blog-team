@@ -23,7 +23,8 @@ app.engine('hbs', handlebars.engine({
   extname: 'hbs'
 }));
 //Serves static files (we need it to import a css file)
-app.use(express.static('public'));
+app.use(express.static('public')); 
+app.use('/uploads', express.static('uploads')); 
 
 app.use(morganMiddleware);
 
