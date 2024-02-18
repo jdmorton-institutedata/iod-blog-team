@@ -25,9 +25,9 @@ ENV PORT=$PORT
 ENV CORS_ORIGIN=$CORS_ORIGIN
 ENV UPLOADS_DIR=$UPLOADS_DIR
 
-RUN sudo apt-get update
+RUN apt-get update
 
-RUN sudo apt-get install -y build-essential python
+RUN apt-get install -y build-essential python3
 
 WORKDIR /app
 COPY . .
