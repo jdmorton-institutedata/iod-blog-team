@@ -25,6 +25,10 @@ ENV PORT=$PORT
 ENV CORS_ORIGIN=$CORS_ORIGIN
 ENV UPLOADS_DIR=$UPLOADS_DIR
 
+RUN sudo apt-get update
+
+RUN sudo apt-get install -y build-essential python
+
 WORKDIR /app
 COPY . .
 RUN npm install
