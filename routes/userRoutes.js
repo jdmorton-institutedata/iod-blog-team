@@ -19,6 +19,8 @@ const verifyToken = require("../auth/authMiddleware");
  * /api/users:
  *  get:
  *    description: Use to request all users
+ *    security:
+ *      - bearerAuth: []
  *    tags:
  *      - Users
  *    responses:

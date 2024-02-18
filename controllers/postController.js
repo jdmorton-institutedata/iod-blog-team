@@ -1,5 +1,8 @@
 // posts controller
 const Post = require('../models/post');
+const User = require('../models/user');
+const Comment = require('../models/comment');
+
 
 /**
  * 
@@ -26,7 +29,7 @@ const getPost = async (id) => {
  * @returns {Promise<Post>}
  */
 const getPostIncludeAll = async (id) => {
-    const data = await Post.findOne({ where: { id: id }, include: { all: true }, raw: true});
+    const data = await Post.findOne({ where: { id: id }, include: [{ model: User, attributes: ['name', 'email', 'avatar'] }, { model: Comment }], raw: true});
     return data;
 };
 
