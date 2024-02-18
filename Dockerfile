@@ -25,7 +25,11 @@ ENV PORT=$PORT
 ENV CORS_ORIGIN=$CORS_ORIGIN
 ENV UPLOADS_DIR=$UPLOADS_DIR
 
-RUN apk --no-cache add --virtual builds-deps build-base python
+# Install python/pip
+ENV PYTHONUNBUFFERED=1
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
 
 WORKDIR /app
 COPY . .
