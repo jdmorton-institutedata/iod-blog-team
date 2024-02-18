@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-var cors = require('cors');
 const handlebars = require('express-handlebars');
 const { handleInvalidJson, handleUnauthorized, handleNotFound, handleAllOtherErrors } = require("./errors/errorHandler");
 const morganMiddleware = require("./logging/morganMiddleware");
